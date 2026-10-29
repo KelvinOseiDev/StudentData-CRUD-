@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Students.Records.StudentDtos
 {
-    internal class AddStudentDto
+    public class AddStudentDto
     {
+        public required string Name { get; set; }
+        public required int Age { get; set; }
+        public required string Grade { get; set; }
     }
 }
