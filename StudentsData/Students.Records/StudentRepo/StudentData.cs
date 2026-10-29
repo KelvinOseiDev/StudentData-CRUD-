@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using Students.Records.StudentModel;
 
 namespace Students.Records.StudentRepo
 {
-    internal class StudentData
+    public class StudentData
     {
+        public List<Student> studentsData = new();
     }
 }

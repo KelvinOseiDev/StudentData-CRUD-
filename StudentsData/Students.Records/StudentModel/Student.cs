@@ -2,9 +2,9 @@
 
 namespace Students.Records.StudentModel
 {
-    internal class Model
+    public class Student
     {
-        public required int Id { get; set; }
+        public int Id { get; set; }
         public required string Name { get; set; }
         public required int Age { get; set; }
         public required string Grade { get; set; }
