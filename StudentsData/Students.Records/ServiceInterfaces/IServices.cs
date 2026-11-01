@@ -8,6 +8,6 @@ namespace Students.Records.ServiceInterfaces
         void AddStudent(AddStudentDto newStudent);
         void UpdateStudent(UpdateStudentDto updatedStudent, int id);
         void DeleteStudent(int id);
-        void ViewStudent(int id);
+        void ViewStudent(int? id);
     }
 }

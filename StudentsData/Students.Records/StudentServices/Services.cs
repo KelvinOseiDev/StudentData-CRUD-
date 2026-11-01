@@ -26,6 +26,7 @@ namespace Students.Records.StudentServices
             if (student is null)
             {
                 Console.WriteLine($"No student with Id:{id} found");
+                return;
             }
             else
             {
@@ -39,7 +40,7 @@ namespace Students.Records.StudentServices
         {
             var student = studentData.studentsData.FirstOrDefault(s => s.Id == id);
 
-            if(student is null)
+            if (student is null)
             {
                 Console.WriteLine($"No student with Id:{id} found");
             }
@@ -49,20 +50,19 @@ namespace Students.Records.StudentServices
                 Console.WriteLine("Student removed successfully.");
             }
         }
-        public void ViewStudent(int id)
+        public void ViewStudent(int? id)
         {
-            
             var student = studentData.studentsData.FirstOrDefault(s => s.Id == id);
 
-            if( student is null)
+            if (student is null || id is null)
             {
-                foreach(var studentData in studentData.studentsData)
+                foreach (var studentData in studentData.studentsData)
                 {
                     Console.WriteLine($"Student ID : {studentData.Id}");
                     Console.WriteLine($"Name       : {studentData.Name}");
                     Console.WriteLine($"Age        : {studentData.Age}");
                     Console.WriteLine($"Grade      : {studentData.Grade}");
-                    Console.WriteLine("====================================");
+                    Console.WriteLine("=======================");
                 }
                 Console.WriteLine();
             }
@@ -72,7 +72,8 @@ namespace Students.Records.StudentServices
                 Console.WriteLine($"Name       : {student.Name}");
                 Console.WriteLine($"Age        : {student.Age}");
                 Console.WriteLine($"Grade      : {student.Grade}");
-                Console.WriteLine("================================");
+                Console.WriteLine("=======================");
+
             }
 
         }
