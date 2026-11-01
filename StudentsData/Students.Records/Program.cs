@@ -30,23 +30,53 @@ do
     switch (option)
     {
         case "1":
-            string? name, age, grade;
-            int _age, _flagGrade;
+            string? newName, newAge, newGrade;
+            int _newAge, _newFlagGrade;
+
             Console.WriteLine("Add New Student");
             Console.WriteLine("---------------");
-            while (true) { Console.Write("Name : "); name = Console.ReadLine(); if (string.IsNullOrEmpty(name)) continue; break; }
-                while (true) { Console.Write("Age : "); age = Console.ReadLine(); if (string.IsNullOrEmpty(age) || !(int.TryParse(age, out _age))) { Console.WriteLine("Enter a valid number."); continue; } break; }
-                    while (true) { Console.Write("Grade : "); grade = Console.ReadLine(); if (string.IsNullOrEmpty(grade) || int.TryParse(grade, out _age)) { Console.WriteLine("Enter a valid grade."); continue; }; break; }
+            while (true) { Console.Write("Name : "); newName = Console.ReadLine(); if (string.IsNullOrEmpty(newName)) continue; break; }
+            while (true) { Console.Write("Age : "); newAge = Console.ReadLine(); if (string.IsNullOrEmpty(newAge) || !(int.TryParse(newAge, out _newAge))) { Console.WriteLine("Enter a valid number."); continue; } break; }
+            while (true) { Console.Write("Grade : "); newGrade = Console.ReadLine(); if (string.IsNullOrEmpty(newGrade) || int.TryParse(newGrade, out _newFlagGrade)) { Console.WriteLine("Enter a valid grade."); continue; }; break; }
 
             var newStudent = new AddStudentDto
             {
-                Name = name,
-                Age = int.Parse(age),
-                Grade = grade
+                Name = newName,
+                Age = _newAge,
+                Grade = newGrade
             };
 
             services.AddStudent(newStudent);
             Console.WriteLine("Student added successfully.");
+        break;
+
+        case "2":
+            string? updateName, updateAge, updateGrade, id;
+            int _updateAge, _updateFlagGrade, _validId;
+
+            Console.Write("Enter student ID: "); id = Console.ReadLine();
+
+            if (int.TryParse(id, out _validId))
+            {
+                Console.WriteLine($"Enter a valid id");
+                continue;
+            }
+
+            Console.WriteLine("Update Student Details");
+            Console.WriteLine("----------------------");
+            while (true) { Console.Write("Name : "); updateName = Console.ReadLine(); if (string.IsNullOrEmpty(updateName)) continue; break; }
+            while (true) { Console.Write("Age : "); updateAge = Console.ReadLine(); if (string.IsNullOrEmpty(updateAge) || !(int.TryParse(updateAge, out _updateAge))) { Console.WriteLine("Enter a valid number."); continue; } break; }
+            while (true) { Console.Write("Grade : "); updateGrade = Console.ReadLine(); if (string.IsNullOrEmpty(updateGrade) || int.TryParse(updateGrade, out _updateFlagGrade)) { Console.WriteLine("Enter a valid grade."); continue; }; break; }
+
+            var updatedStudent = new UpdateStudentDto
+            {
+                Name = updateName,
+                Age = _updateAge,
+                Grade = updateGrade
+            };
+
+            services.UpdateStudent(updatedStudent,_validId);
+            Console.WriteLine("Student updated successfully.");
         break;
     }
     
